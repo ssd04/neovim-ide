@@ -15,3 +15,8 @@ RUN ["/tmp/setup_neovim.sh"]
 
 RUN mkdir ${work_folder}
 WORKDIR ${work_folder}
+
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN ln -s /usr/local/bin/docker-entrypoint.sh /
+ENTRYPOINT ["docker-entrypoint.sh"]
+CMD ["nvim"]
